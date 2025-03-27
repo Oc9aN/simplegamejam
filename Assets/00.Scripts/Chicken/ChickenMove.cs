@@ -90,11 +90,15 @@ public class ChickenMove : ChickenComponent
         // 활공 : _glidingMaxVelocity보다 더 느려질수는 없음
         if (Chicken.Stamina <= 0) return;
 
-        if (_rigidbody2D.linearVelocity.y < 0 && _rigidbody2D.linearVelocity.y < _glidingMaxVelocity)
+        if (_rigidbody2D.linearVelocity.y < 0)
         {
             Chicken.ChickenState = ChickenState.Gliding;
-            _rigidbody2D.linearVelocity += _gravity * (_glidingForce * Time.deltaTime);
             Chicken.Stamina -= _glidingStamina * Time.deltaTime;
+            // 제한 아래보다 Y 가속도가 붙은 경우만 느리게
+            if (_rigidbody2D.linearVelocity.y < _glidingMaxVelocity)
+            {
+                _rigidbody2D.linearVelocity += _gravity * (_glidingForce * Time.deltaTime);
+            }
         }
     }
 }
