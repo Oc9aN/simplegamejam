@@ -27,6 +27,8 @@ public class Chicken : MonoBehaviour
         get => _chickenState;
         set
         {
+            if (_chickenState == value) return;
+            
             _chickenState = value;
             OnStateChange?.Invoke(_chickenState);
         }

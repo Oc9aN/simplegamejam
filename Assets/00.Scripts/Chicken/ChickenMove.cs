@@ -32,10 +32,8 @@ public class ChickenMove : ChickenComponent
 
     private void Update()
     {
-        // 테스트용 점프 코드
         if (Input.GetKey(KeyCode.Space))
         {
-            //Jump();
             OnGliding();
         }
 
@@ -72,7 +70,11 @@ public class ChickenMove : ChickenComponent
         if (_rigidbody2D.linearVelocity.y < 0)
         {
             _rigidbody2D.linearVelocity -= _gravity * (_fallMultiplier * Time.deltaTime);
-            Chicken.ChickenState = ChickenState.Fall;
+            // 글라이딩이 아니면 추락중
+            if (Chicken.ChickenState != ChickenState.Gliding)
+            {
+                Chicken.ChickenState = ChickenState.Fall;
+            }
         }
 
         // Y 가속도 제한
