@@ -7,8 +7,17 @@ public class Monster : MonoBehaviour
     [SerializeField] private float _jumpPadForce;
     
     private Vector2 _moveDirection = Vector2.zero;
-    public Vector2 MoveDirection { get => _moveDirection; set => _moveDirection = value; }
-    
+
+    public Vector2 MoveDirection
+    {
+        get => _moveDirection;
+        set
+        {
+            _moveDirection = value;
+            SetSpriteFlip(_moveDirection);
+        }
+    }
+
     private SpriteRenderer _spriteRenderer;
 
     private void Awake()
