@@ -22,8 +22,8 @@ public class ChickenAnimation : ChickenComponent
         Debug.Log(Chicken);
         Chicken.OnStateChange += TraceGliding;
 
-        GameManager.Instance.OnGameOver += () => SetDeath(true);
-        GameManager.Instance.OnGameStart += () => SetDeath(false);
+        PlayManager.Instance.OnGameOver += () => SetDeath(true);
+        PlayManager.Instance.OnGameStart += () => SetDeath(false);
     }
 
     private void Update()

@@ -8,7 +8,7 @@ public class Ground : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             // 게임 오버
-            GameManager.Instance.GameOver();
+            PlayManager.Instance.GameOver();
         }
     }
 }

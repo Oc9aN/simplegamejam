@@ -22,8 +22,8 @@ public class MonsterSpawner : MonoBehaviour
     private void Start()
     {
         _spawnRate = 0f;
-        GameManager.Instance.OnGameOver += StopSpawn;
-        GameManager.Instance.OnGameStart += StartSpawn;
+        PlayManager.Instance.OnGameOver += StopSpawn;
+        PlayManager.Instance.OnGameStart += StartSpawn;
 
         StopSpawn();
     }

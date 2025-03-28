@@ -1,10 +1,10 @@
 using System;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class PlayManager : MonoBehaviour
 {
     // 게임 오버, 재시작 등을 관리
-    public static GameManager Instance;
+    public static PlayManager Instance;
 
     public const float START_HEIGHT = 1000f;
     

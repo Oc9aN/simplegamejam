@@ -27,7 +27,7 @@ public class FearManager : MonoBehaviour
             if (_fear >= _maxFear)
             {
                 Debug.Log("Fear over");
-                GameManager.Instance.GameOver();
+                PlayManager.Instance.GameOver();
             }
         }
     }

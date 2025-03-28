@@ -71,7 +71,7 @@ public class Chicken : MonoBehaviour
         Stamina = _maxStamina;
 
         // 게임 오버 및 재시작 설정
-        GameManager.Instance.OnGameStart += StartGame;
+        PlayManager.Instance.OnGameStart += StartGame;
         
         gameObject.SetActive(false);
     }
@@ -120,7 +120,7 @@ public class Chicken : MonoBehaviour
     private void StartGame()
     {
         gameObject.SetActive(true);
-        transform.position = new Vector2(transform.position.x, GameManager.START_HEIGHT);
+        transform.position = new Vector2(transform.position.x, PlayManager.START_HEIGHT);
         ChickenState = ChickenState.Good;
     }
 }
