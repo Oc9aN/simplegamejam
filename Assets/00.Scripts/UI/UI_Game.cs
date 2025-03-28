@@ -7,6 +7,7 @@ public class UI_Game : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _scoreText;
     [SerializeField] private Slider _staminaSlider;
+    [SerializeField] private Slider _fearSlider;
     
     public static UI_Game Instance;
 
@@ -32,5 +33,15 @@ public class UI_Game : MonoBehaviour
     public void RefreshStamina(float stamina)
     {
         _staminaSlider.value = stamina;
+    }
+
+    public void InitializeFear(float maxFear)
+    {
+        _fearSlider.maxValue = maxFear;
+    }
+
+    public void RefreshFear(float fear)
+    {
+        _fearSlider.value = fear;
     }
 }

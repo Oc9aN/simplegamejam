@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
     // 게임 오버, 재시작 등을 관리
     public static GameManager Instance;
 
-    public const float START_HEIGHT = 40f;
+    public const float START_HEIGHT = 1000f;
     
     public event Action OnGameOver;
     public event Action OnGameStart;

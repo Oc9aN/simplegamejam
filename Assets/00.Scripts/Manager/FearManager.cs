@@ -10,6 +10,7 @@ public class FearManager : MonoBehaviour
 
     public float MaxFear
     {
+        get => _maxFear;
         set => _maxFear = value;
     }
 
@@ -21,6 +22,7 @@ public class FearManager : MonoBehaviour
         set
         {
             _fear = value;
+            UI_Game.Instance.RefreshFear(_maxFear - _fear);
             // 피어가 넘치면
             if (_fear >= _maxFear)
             {
@@ -38,5 +40,10 @@ public class FearManager : MonoBehaviour
         }
 
         instance = this;
+    }
+
+    private void Start()
+    {
+        UI_Game.Instance.InitializeFear(_maxFear);
     }
 }
