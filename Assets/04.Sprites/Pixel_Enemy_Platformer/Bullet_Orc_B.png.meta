@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Bullet_Orc_B_0: 8107364128928334387
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

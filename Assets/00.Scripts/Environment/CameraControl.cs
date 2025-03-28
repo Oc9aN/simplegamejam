@@ -13,6 +13,7 @@ public class CameraControl : MonoBehaviour
 
     private void Move()
     {
+        if (!_target.activeInHierarchy) return;
         // y축만 타겟 따라 이동
         Vector2 newPosition = _target.transform.position;
         newPosition.x = transform.position.x;

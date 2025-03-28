@@ -20,6 +20,13 @@ public class UI_Game : MonoBehaviour
         Instance = this;
     }
 
+    private void Start()
+    {
+        PlayManager.Instance.OnPlayStart += () => gameObject.SetActive(true);
+        
+        gameObject.SetActive(false);
+    }
+
     public void RefreshScore(int score)
     {
         _scoreText.text = $"{score}M";

@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Bullet_Wizzart_C_0: 2840137428670090663
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

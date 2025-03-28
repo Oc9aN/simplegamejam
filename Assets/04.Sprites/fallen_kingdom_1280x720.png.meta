@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      fallen_kingdom_1280x720_0: -7183346930889658688
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

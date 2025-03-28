@@ -6,10 +6,10 @@ public class PlayManager : MonoBehaviour
     // 게임 오버, 재시작 등을 관리
     public static PlayManager Instance;
 
-    public const float START_HEIGHT = 1000f;
+    public const float START_HEIGHT = 100f;
     
     public event Action OnGameOver;
-    public event Action OnGameStart;
+    public event Action OnPlayStart;
 
     private void Awake()
     {
@@ -28,7 +28,7 @@ public class PlayManager : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
-            StartGame();
+            StartPlay();
     }
 
     public void GameOver()
@@ -36,8 +36,8 @@ public class PlayManager : MonoBehaviour
         OnGameOver?.Invoke();
     }
 
-    public void StartGame()
+    public void StartPlay()
     {
-        OnGameStart?.Invoke();
+        OnPlayStart?.Invoke();
     }
 }
