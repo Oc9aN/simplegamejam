@@ -4,17 +4,24 @@ using UnityEngine;
 
 public class Intro_Chicken : MonoBehaviour
 {
-    private Rigidbody2D _rigidbody2D;
-
+    private const string Y_VELOCITY = "YVelocity";
     [SerializeField] private float _jumpForce;
 
     [SerializeField] private Transform _target;
 
-    private Coroutine _moveCoroutine;
+    private Rigidbody2D _rigidbody2D;
+
+    private Animator _animator;
 
     private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
+    }
+
+    private void Update()
+    {
+        _animator.SetFloat(Y_VELOCITY, _rigidbody2D.linearVelocityY);
     }
 
     public void Jump(float jumpForce)
@@ -24,27 +31,19 @@ public class Intro_Chicken : MonoBehaviour
 
     public void ChickenIntroJumpEvent()
     {
+        _rigidbody2D.gravityScale = 1f;
         Jump(_jumpForce);
-        Debug.Log("Velocity Changed");
         _rigidbody2D.linearVelocityX = 1f;
-        Debug.Log(_rigidbody2D.linearVelocityX);
-
-        if (_moveCoroutine != null)
-        {
-            StopCoroutine(_moveCoroutine);
-        }
-        _moveCoroutine = StartCoroutine(Move());
+        StartCoroutine(Move());
     }
 
     private IEnumerator Move()
     {
-        Debug.Log("Coroutine Started");
-        Debug.Log(Mathf.Abs(_target.position.x - transform.position.x));
         while (Mathf.Abs(_target.position.x - transform.position.x) > 0.1f)
         {
             yield return null;
         }
-        Debug.Log("Moved");
+
         _rigidbody2D.linearVelocityX = 0f;
         yield break;
     }

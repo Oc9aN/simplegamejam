@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Intro_Monster : MonoBehaviour
 {
-    [SerializeField] private MMF_Player _player;
+    private MMF_Player _player;
     [SerializeField] private float _jumpForce;
 
     private void Awake()
