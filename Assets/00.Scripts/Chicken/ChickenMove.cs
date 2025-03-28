@@ -60,6 +60,12 @@ public class ChickenMove : ChickenComponent
     {
         var moveInput = Input.GetAxisRaw("Horizontal");
 
+        if (moveInput != 0)
+        {
+            Chicken.FlipX(moveInput > 0);
+        }
+        
+        // TODO: 가속도로 이동하게
         _rigidbody2D.linearVelocityX = moveInput * _moveSpeed;
     }
 

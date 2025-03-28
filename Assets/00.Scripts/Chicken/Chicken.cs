@@ -8,7 +8,8 @@ public enum ChickenState
     Fall, // 공포 증가
     Death,
 }
-// 데이터를 담당
+
+// 변화하는 데이터를 담당
 public class Chicken : MonoBehaviour
 {
     // 스테미나
@@ -18,8 +19,10 @@ public class Chicken : MonoBehaviour
     [Header("FEAR")] [SerializeField] private float _maxFear;
     [SerializeField] private float _fearRecoverRate;
     [SerializeField] private float _fearGainRate;
-    
+
     public event Action<ChickenState> OnStateChange;
+
+    private SpriteRenderer _spriteRenderer;
 
     private ChickenState _chickenState;
 
@@ -29,7 +32,7 @@ public class Chicken : MonoBehaviour
         set
         {
             if (_chickenState == value) return;
-            
+
             _chickenState = value;
             OnStateChange?.Invoke(_chickenState);
         }
@@ -53,6 +56,11 @@ public class Chicken : MonoBehaviour
         }
     }
 
+    private void Awake()
+    {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
     private void Start()
     {
         // 맥스 피어 설정
@@ -61,7 +69,7 @@ public class Chicken : MonoBehaviour
         // UI 설정
         UI_Game.Instance.InitializeStamina(_maxStamina);
         Stamina = _maxStamina;
-        
+
         // 게임 오버 및 재시작 설정
         GameManager.Instance.OnGameStart += StartGame;
     }
@@ -69,7 +77,7 @@ public class Chicken : MonoBehaviour
     private void Update()
     {
         if (_chickenState == ChickenState.Death) return;
-        
+
         StaminaRecovery();
         FearControl();
     }
@@ -91,6 +99,7 @@ public class Chicken : MonoBehaviour
                 {
                     Fear -= _fearRecoverRate * Time.deltaTime;
                 }
+
                 break;
             case ChickenState.Gliding:
                 Fear += _fearGainRate / 2f * Time.deltaTime;
@@ -99,6 +108,11 @@ public class Chicken : MonoBehaviour
                 Fear += _fearGainRate * Time.deltaTime;
                 break;
         }
+    }
+
+    public void FlipX(bool value)
+    {
+        _spriteRenderer.flipX = value;
     }
 
     private void StartGame()

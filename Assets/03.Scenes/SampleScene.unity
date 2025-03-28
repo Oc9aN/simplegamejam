@@ -2708,25 +2708,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2369841433924636617, guid: 2a4a3b33b000a0d4eb4d7da6b1575c07, type: 3}
-      propertyPath: m_Size.x
-      value: 0.625
-      objectReference: {fileID: 0}
-    - target: {fileID: 2369841433924636617, guid: 2a4a3b33b000a0d4eb4d7da6b1575c07, type: 3}
-      propertyPath: m_Size.y
-      value: 0.6666667
-      objectReference: {fileID: 0}
-    - target: {fileID: 2369841433924636617, guid: 2a4a3b33b000a0d4eb4d7da6b1575c07, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6184431833434048790, guid: 2a4a3b33b000a0d4eb4d7da6b1575c07, type: 3}
       propertyPath: m_Name
       value: Chicken
-      objectReference: {fileID: 0}
-    - target: {fileID: 6703027561924484020, guid: 2a4a3b33b000a0d4eb4d7da6b1575c07, type: 3}
-      propertyPath: _maxStamina
-      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
