@@ -88,7 +88,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.625, y: 0.6666667}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -106,11 +106,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dfa29d3dd275a748b31e2e39631dd1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxStamina: 100
+  _maxStamina: 50
   _staminaRecoveryRate: 5
   _maxFear: 100
-  _fearRecoverRate: 50
-  _fearGainRate: 20
+  _fearRecoverRate: 25
+  _fearGainRate: 33
 --- !u!114 &5769848122118120035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,7 +126,7 @@ MonoBehaviour:
   _jumpMultiplier: 1
   _moveSpeed: 10
   _fallMultiplier: 2
-  _stampForce: 20
+  _stampForce: 30
   _stampRecoverForce: 20
   _glidingForce: 4
   _glidingMaxVelocity: -3
@@ -194,7 +194,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.625, y: 0.6666667}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 0.625, y: 0.6666667}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0

@@ -25,12 +25,10 @@ public class FearManager : MonoBehaviour
             if (_fear >= _maxFear)
             {
                 Debug.Log("Fear over");
-                OnFearOut?.Invoke();
+                GameManager.Instance.GameOver();
             }
         }
     }
-
-    public event Action OnFearOut;
 
     private void Awake()
     {

@@ -45,7 +45,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _monsterPrefabs:
-  - {fileID: 2708013377863670013, guid: 8645ca8b8dfabb14fb70cd8cd1dcda80, type: 3}
+  - {fileID: 660731459315485302, guid: 37ffb7cf63259cd4791b7a3327002d50, type: 3}
+  - {fileID: 6105389669645116166, guid: e4d404119dcf7ac4cb43dbcb9aace590, type: 3}
+  - {fileID: 4971158175593723738, guid: 94de9b00efac88c4ba83173492ce3bf8, type: 3}
+  - {fileID: 4383166711075778004, guid: 12c6faaf2ea1eb14a9d770468a9c5d75, type: 3}
+  - {fileID: 3226438314402781275, guid: aec947f0c056c5240bd006c640876bfc, type: 3}
+  - {fileID: 5324281745899379477, guid: 935df6de652f5c443a583f7d4e006012, type: 3}
+  - {fileID: 4030517560252805891, guid: 3041603bea276eb4884974b33ea766d2, type: 3}
+  - {fileID: 8563319665530244176, guid: 6fbea5025e94c2d44bd3266fd739ff17, type: 3}
   _minSpawnRate: 1
   _maxSpawnRate: 3
   _spawnDirection: {x: -1, y: 0}

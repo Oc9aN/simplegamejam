@@ -6,6 +6,7 @@ public enum ChickenState
     Good, // 공포 회복
     Gliding, // 약간 공포 증가
     Fall, // 공포 증가
+    Death,
 }
 // 데이터를 담당
 public class Chicken : MonoBehaviour
@@ -57,12 +58,18 @@ public class Chicken : MonoBehaviour
         // 맥스 피어 설정
         FearManager.instance.MaxFear = _maxFear;
 
+        // UI 설정
         UI_Game.Instance.InitializeStamina(_maxStamina);
         Stamina = _maxStamina;
+        
+        // 게임 오버 및 재시작 설정
+        GameManager.Instance.OnGameStart += StartGame;
     }
 
     private void Update()
     {
+        if (_chickenState == ChickenState.Death) return;
+        
         StaminaRecovery();
         FearControl();
     }
@@ -92,5 +99,11 @@ public class Chicken : MonoBehaviour
                 Fear += _fearGainRate * Time.deltaTime;
                 break;
         }
+    }
+
+    private void StartGame()
+    {
+        transform.position = new Vector2(transform.position.x, GameManager.START_HEIGHT);
+        ChickenState = ChickenState.Good;
     }
 }

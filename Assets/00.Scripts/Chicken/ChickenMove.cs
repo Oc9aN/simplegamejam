@@ -5,7 +5,7 @@ public class ChickenMove : ChickenComponent
 {
     // 닭의 움직임 제어
     private const float JUMP_FORCE = 10f;
-    private const float MAX_Y_VELOCITY = -10f;
+    private const float MAX_Y_VELOCITY = -15f;
     [Header("JUMP")] [SerializeField] private float _jumpMultiplier = 1f; // 점프 계수
 
     [Header("MOVE")] [SerializeField] private float _moveSpeed = 10f; // 좌우 이동속도
@@ -32,6 +32,8 @@ public class ChickenMove : ChickenComponent
 
     private void Update()
     {
+        if (Chicken.ChickenState == ChickenState.Death) return;
+        
         if (Input.GetKey(KeyCode.Space))
         {
             OnGliding();
@@ -49,6 +51,8 @@ public class ChickenMove : ChickenComponent
 
     public void Jump(float force = JUMP_FORCE)
     {
+        if (Chicken.ChickenState == ChickenState.Death) return;
+        
         _rigidbody2D.linearVelocityY = force;
     }
 

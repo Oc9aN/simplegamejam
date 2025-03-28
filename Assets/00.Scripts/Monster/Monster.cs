@@ -8,6 +8,14 @@ public class Monster : MonoBehaviour
     
     private Vector2 _moveDirection = Vector2.zero;
     public Vector2 MoveDirection { get => _moveDirection; set => _moveDirection = value; }
+    
+    private SpriteRenderer _spriteRenderer;
+
+    private void Awake()
+    {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
     // 충돌 계산
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -27,6 +35,14 @@ public class Monster : MonoBehaviour
         else
         {
             Debug.Log("No Jump");
+        }
+    }
+
+    private void SetSpriteFlip(Vector2 direction)
+    {
+        if (direction.x < 0)
+        {
+            _spriteRenderer.flipX = true;
         }
     }
 }

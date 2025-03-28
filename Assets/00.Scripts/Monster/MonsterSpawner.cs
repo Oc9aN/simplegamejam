@@ -12,7 +12,7 @@ public class MonsterSpawner : MonoBehaviour
 
     [SerializeField] private float _minSpawnRate = 1f;
     [SerializeField] private float _maxSpawnRate = 2f;
-    
+
     [SerializeField] private Vector2 _spawnDirection;
 
     private float _spawnRate;
@@ -22,6 +22,10 @@ public class MonsterSpawner : MonoBehaviour
     private void Start()
     {
         _spawnRate = 0f;
+        GameManager.Instance.OnGameOver += StopSpawn;
+        GameManager.Instance.OnGameStart += StartSpawn;
+
+        StopSpawn();
     }
 
     private void Update()
@@ -42,5 +46,15 @@ public class MonsterSpawner : MonoBehaviour
 
         _spawnTimer = 0f;
         _spawnRate = Random.Range(_minSpawnRate, _maxSpawnRate);
+    }
+
+    private void StopSpawn()
+    {
+        gameObject.SetActive(false);
+    }
+
+    private void StartSpawn()
+    {
+        gameObject.SetActive(true);
     }
 }

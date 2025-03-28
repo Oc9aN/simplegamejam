@@ -5,6 +5,7 @@ public class ChickenAnimation : ChickenComponent
 {
     private const string Y_VELOCITY = "YVelocity";
     private const string GLIDING = "Gliding";
+    private const string DEATH = "Death";
 
     private Rigidbody2D _rigidbody2D;
     private Animator _animator;
@@ -20,10 +21,14 @@ public class ChickenAnimation : ChickenComponent
     {
         Debug.Log(Chicken);
         Chicken.OnStateChange += TraceGliding;
+
+        GameManager.Instance.OnGameOver += () => SetDeath(true);
+        GameManager.Instance.OnGameStart += () => SetDeath(false);
     }
 
     private void Update()
     {
+        if (Chicken.ChickenState == ChickenState.Death) return;
         TraceYVelocity();
     }
 
@@ -35,5 +40,14 @@ public class ChickenAnimation : ChickenComponent
     private void TraceGliding(ChickenState state)
     {
         _animator.SetBool(GLIDING, state == ChickenState.Gliding);
+    }
+
+    private void SetDeath(bool value)
+    {
+        if (value)
+        {
+            Chicken.ChickenState = ChickenState.Death;
+        }
+        _animator.SetBool(DEATH, value);
     }
 }
