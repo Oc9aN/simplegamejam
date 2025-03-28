@@ -21,7 +21,7 @@ public class MonsterSpawner : MonoBehaviour
 
     private void Start()
     {
-        _spawnRate = 0f;
+        _spawnRate = Random.Range(0f, 0.5f);
         PlayManager.Instance.OnGameOver += StopSpawn;
         PlayManager.Instance.OnPlayStart += StartSpawn;
 

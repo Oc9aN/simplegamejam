@@ -21,6 +21,7 @@ public class Chicken : MonoBehaviour
     [SerializeField] private float _fearGainRate;
 
     public event Action<ChickenState> OnStateChange;
+    public event Action OnPlayStart;
 
     private SpriteRenderer _spriteRenderer;
 
@@ -123,5 +124,6 @@ public class Chicken : MonoBehaviour
         transform.position = new Vector2(transform.position.x, PlayManager.START_HEIGHT);
         ChickenState = ChickenState.Good;
         FearManager.instance.Fear = 0f;
+        OnPlayStart?.Invoke();
     }
 }

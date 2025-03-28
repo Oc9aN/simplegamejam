@@ -50,6 +50,7 @@ public class Intro_Chicken : MonoBehaviour
 
     private void OnDisable()
     {
+        _rigidbody2D.gravityScale = 0f;
         StopAllCoroutines();
     }
 

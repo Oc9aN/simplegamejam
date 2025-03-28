@@ -11,7 +11,11 @@ public class FearManager : MonoBehaviour
     public float MaxFear
     {
         get => _maxFear;
-        set => _maxFear = value;
+        set
+        {
+            _maxFear = value;
+            UI_Game.Instance.InitializeFear(_maxFear);
+        }
     }
 
     private float _fear;
@@ -40,10 +44,5 @@ public class FearManager : MonoBehaviour
         }
 
         instance = this;
-    }
-
-    private void Start()
-    {
-        UI_Game.Instance.InitializeFear(_maxFear);
     }
 }

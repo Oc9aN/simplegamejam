@@ -36,6 +36,11 @@ public class ChickenMove : ChickenComponent
 #endif
     }
 
+    private void Start()
+    {
+        Chicken.OnPlayStart += () => Jump();
+    }
+
     private void Update()
     {
         if (Chicken.ChickenState == ChickenState.Death) return;
