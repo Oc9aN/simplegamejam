@@ -72,6 +72,8 @@ public class Chicken : MonoBehaviour
 
         // 게임 오버 및 재시작 설정
         GameManager.Instance.OnGameStart += StartGame;
+        
+        gameObject.SetActive(false);
     }
 
     private void Update()
@@ -117,6 +119,7 @@ public class Chicken : MonoBehaviour
 
     private void StartGame()
     {
+        gameObject.SetActive(true);
         transform.position = new Vector2(transform.position.x, GameManager.START_HEIGHT);
         ChickenState = ChickenState.Good;
     }
