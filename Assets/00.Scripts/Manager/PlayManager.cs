@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayManager : MonoBehaviour
 {
@@ -33,7 +35,16 @@ public class PlayManager : MonoBehaviour
 
     public void GameOver()
     {
+        // TODO: 추후 수정
         OnGameOver?.Invoke();
+        StartCoroutine(ReloadScene());
+    }
+
+    public IEnumerator ReloadScene()
+    {
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        yield return null;
     }
 
     public void StartPlay()

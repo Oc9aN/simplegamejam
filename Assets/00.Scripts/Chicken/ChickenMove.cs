@@ -17,6 +17,8 @@ public class ChickenMove : ChickenComponent
     [Header("Gliding")] [SerializeField] private float _glidingForce = 1f; // 활공 힘
     [SerializeField] private float _glidingMaxVelocity = -3f; // 활공시 최대로 낮아지는 속도
     [SerializeField] private float _glidingStamina = 0.5f; // 활공시 소모 스테미너
+    
+    [SerializeField] private DynamicJoystick _joystick;
 
     private Rigidbody2D _rigidbody2D;
 
@@ -28,6 +30,10 @@ public class ChickenMove : ChickenComponent
         _rigidbody2D = GetComponent<Rigidbody2D>();
 
         _gravity = new Vector2(0f, -Physics2D.gravity.y); // 양수값으로 저장
+        
+#if !UNITY_ANDROID
+        Destroy(_joystick.gameObject);
+#endif
     }
 
     private void Update()
@@ -59,6 +65,10 @@ public class ChickenMove : ChickenComponent
     private void Move()
     {
         var moveInput = Input.GetAxisRaw("Horizontal");
+        
+#if UNITY_ANDROID
+        moveInput = _joystick.Horizontal;
+#endif
 
         if (moveInput != 0)
         {
