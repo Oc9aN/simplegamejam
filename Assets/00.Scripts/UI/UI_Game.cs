@@ -23,6 +23,7 @@ public class UI_Game : MonoBehaviour
     private void Start()
     {
         PlayManager.Instance.OnPlayStart += () => gameObject.SetActive(true);
+        PlayManager.Instance.OnGameOver += () => gameObject.SetActive(false);
         
         gameObject.SetActive(false);
     }

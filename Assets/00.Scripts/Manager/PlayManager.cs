@@ -37,14 +37,6 @@ public class PlayManager : MonoBehaviour
     {
         // TODO: 추후 수정
         OnGameOver?.Invoke();
-        StartCoroutine(ReloadScene());
-    }
-
-    public IEnumerator ReloadScene()
-    {
-        yield return new WaitForSeconds(1f);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        yield return null;
     }
 
     public void StartPlay()

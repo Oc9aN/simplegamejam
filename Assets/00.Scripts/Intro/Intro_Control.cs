@@ -24,6 +24,8 @@ public class Intro_Control : MonoBehaviour
 
     public void EndIntro()
     {
+        _player.StopFeedbacks();
+        _player.ResetFeedbacks();
         gameObject.SetActive(false);
     }
 }

@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 3775915406523565196}
   - component: {fileID: 4568643738469266931}
   - component: {fileID: 5084287448700278320}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Chicken
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -131,6 +131,7 @@ MonoBehaviour:
   _glidingForce: 4
   _glidingMaxVelocity: -3
   _glidingStamina: 25
+  _joystick: {fileID: 0}
 --- !u!114 &5193726968050507660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,7 +226,7 @@ Rigidbody2D:
     serializedVersion: 2
     m_Bits: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!95 &5084287448700278320
