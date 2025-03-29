@@ -18,6 +18,8 @@ public class ChickenMove : ChickenComponent
     [SerializeField] private float _glidingMaxVelocity = -3f; // 활공시 최대로 낮아지는 속도
     [SerializeField] private float _glidingStamina = 0.5f; // 활공시 소모 스테미너
 
+    [Header("LIMIT")] [SerializeField] private float _limitedX = 2.7f;
+
     [SerializeField] private DynamicJoystick _joystick;
 
     private Rigidbody2D _rigidbody2D;
@@ -84,6 +86,16 @@ public class ChickenMove : ChickenComponent
         if (moveInput != 0)
         {
             Chicken.FlipX(moveInput > 0);
+        }
+
+        if (transform.position.x > _limitedX && moveInput > 0)
+        {
+            moveInput = 0f;
+        }
+        
+        if (transform.position.x < -_limitedX && moveInput < 0)
+        {
+            moveInput = 0f;
         }
 
         // TODO: 가속도로 이동하게

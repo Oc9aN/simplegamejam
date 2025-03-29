@@ -44,15 +44,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b2f95b6ae918104dbe88ba99579ddd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _monsterPrefabs:
-  - {fileID: 660731459315485302, guid: 37ffb7cf63259cd4791b7a3327002d50, type: 3}
-  - {fileID: 6105389669645116166, guid: e4d404119dcf7ac4cb43dbcb9aace590, type: 3}
-  - {fileID: 4971158175593723738, guid: 94de9b00efac88c4ba83173492ce3bf8, type: 3}
-  - {fileID: 4383166711075778004, guid: 12c6faaf2ea1eb14a9d770468a9c5d75, type: 3}
-  - {fileID: 3226438314402781275, guid: aec947f0c056c5240bd006c640876bfc, type: 3}
-  - {fileID: 5324281745899379477, guid: 935df6de652f5c443a583f7d4e006012, type: 3}
-  - {fileID: 4030517560252805891, guid: 3041603bea276eb4884974b33ea766d2, type: 3}
-  - {fileID: 8563319665530244176, guid: 6fbea5025e94c2d44bd3266fd739ff17, type: 3}
+  _monsterAnimators:
+  - {fileID: 9100000, guid: 5adf75103845ae049af89583489d381f, type: 2}
+  - {fileID: 9100000, guid: a4759c0042a58024db3d0cb818ccb05b, type: 2}
+  - {fileID: 9100000, guid: b9e46a32664f9334a92b982fc52bbd78, type: 2}
+  - {fileID: 9100000, guid: 63d74d9b4d18b9043845b2aaea149802, type: 2}
+  - {fileID: 9100000, guid: 490cf66286b426f4e9f0b71ec945346c, type: 2}
+  - {fileID: 9100000, guid: 50ae14028cdc08c4190a13a7271ba28f, type: 2}
+  - {fileID: 9100000, guid: ab1a806ae850080419bb3655686bd3f1, type: 2}
+  - {fileID: 9100000, guid: e66288a29d67b944da62c99246efe083, type: 2}
   _minSpawnRate: 1
   _maxSpawnRate: 3
   _spawnDirection: {x: 1, y: 0}

@@ -46,6 +46,12 @@ public class MonsterMove : MonoBehaviour
         Appear();
     }
 
+    private void OnEnable()
+    {
+        _moveDirection = _monster.MoveDirection;
+        Appear();
+    }
+
     private void Update()
     {
         CalculateGravity();

@@ -5,7 +5,7 @@ using UnityEngine.Serialization;
 public class MonsterPool : MonoBehaviour
 {
     // 몬스터 프리팹들
-    [SerializeField] private List<Monster> _monsterPrefabs;
+    [SerializeField] private Monster _monsterPrefab;
     // 풀 사이즈
     [SerializeField] private int _poolSize;
     // 풀
@@ -22,35 +22,31 @@ public class MonsterPool : MonoBehaviour
         }
         Instance = this;
 
-        int enemyPrefabCount = _monsterPrefabs.Count;
-        _pool = new List<Monster>(enemyPrefabCount * _poolSize);
-        foreach (var enemyPrefab in _monsterPrefabs)
+        _pool = new List<Monster>(_poolSize);
+        for (int i = 0; i < _poolSize; i++)
         {
-            for (int i = 0; i < _poolSize; i++)
-            {
-                Monster enemy = Instantiate(enemyPrefab, transform);
+            Monster monster = Instantiate(_monsterPrefab, transform);
                 
-                _pool.Add(enemy);
+            _pool.Add(monster);
                 
-                // 비활성화
-                enemy.gameObject.SetActive(false);
-            }
+            // 비활성화
+            monster.gameObject.SetActive(false);
         }
     }
     
     public Monster Create(Vector3 position)
     {
-        foreach (var enemy in _pool)
+        foreach (var monster in _pool)
         {
-            if (enemy.gameObject.activeInHierarchy == false)
+            if (monster.gameObject.activeInHierarchy == false)
             {
-                enemy.transform.position = position;
+                monster.transform.position = position;
                     
-                // enemy.Initialize();
+                // monster.Initialize();
                     
-                enemy.gameObject.SetActive(true);
+                monster.gameObject.SetActive(true);
 
-                return enemy;
+                return monster;
             }
         }
         return null;
@@ -58,9 +54,9 @@ public class MonsterPool : MonoBehaviour
 
     public void AllDestroy()
     {
-        foreach (var enemy in _pool)
+        foreach (var monster in _pool)
         {
-            enemy.gameObject.SetActive(false);
+            monster.gameObject.SetActive(false);
         }
     }
 }

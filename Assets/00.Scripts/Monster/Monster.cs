@@ -6,10 +6,15 @@ public class Monster : MonoBehaviour
 {
     [SerializeField] private float _threshold;
     [SerializeField] private float _jumpPadForce;
+    [SerializeField] private float _lifeTime;
 
     private Vector2 _moveDirection = Vector2.zero;
 
     private MMF_Player _player;
+
+    private Animator _animator;
+    
+    private float _lifeTimer;
 
     public Vector2 MoveDirection
     {
@@ -27,6 +32,18 @@ public class Monster : MonoBehaviour
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _player = GetComponent<MMF_Player>();
+        _animator = GetComponent<Animator>();
+    }
+
+    private void Update()
+    {
+        LifeTimer();
+    }
+
+    public void Initialize(Vector2 moveDirection, RuntimeAnimatorController animatorController)
+    {
+        MoveDirection = moveDirection;
+        _animator.runtimeAnimatorController = animatorController;
     }
 
     // 충돌 계산
@@ -52,6 +69,20 @@ public class Monster : MonoBehaviour
         if (direction.x < 0)
         {
             _spriteRenderer.flipX = true;
+        }
+        else
+        {
+            _spriteRenderer.flipX = false;
+        }
+    }
+
+    private void LifeTimer()
+    {
+        _lifeTimer += Time.deltaTime;
+        if (_lifeTimer >= _lifeTime)
+        {
+            gameObject.SetActive(false);
+            _lifeTimer = 0f;
         }
     }
 }

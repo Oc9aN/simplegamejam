@@ -7,8 +7,8 @@ public class MonsterSpawner : MonoBehaviour
 {
     // 몬스터를 원하는 위치/시간에 맞춰 생성
     // TODO: 몬스터 풀에서 몬스터 받아서 생성
-
-    [SerializeField] private List<GameObject> _monsterPrefabs;
+    [SerializeField] private List<RuntimeAnimatorController> _monsterAnimators;
+    //[SerializeField] private List<GameObject> _monsterPrefabs;
 
     [SerializeField] private float _minSpawnRate = 1f;
     [SerializeField] private float _maxSpawnRate = 2f;
@@ -39,10 +39,11 @@ public class MonsterSpawner : MonoBehaviour
         if (_spawnTimer <= _spawnRate) return;
 
         // 생성
-        GameObject monster = Instantiate(_monsterPrefabs[Random.Range(0, _monsterPrefabs.Count)]);
-        monster.transform.position = transform.position;
+        // GameObject monster = Instantiate(_monsterPrefabs[Random.Range(0, _monsterPrefabs.Count)]);
+        // monster.transform.position = transform.position;
+        Monster monster = MonsterPool.Instance.Create(transform.position);
 
-        monster.GetComponent<Monster>().MoveDirection = _spawnDirection;
+        monster.Initialize(_spawnDirection, _monsterAnimators[Random.Range(0, _monsterAnimators.Count)]);
 
         _spawnTimer = 0f;
         _spawnRate = Random.Range(_minSpawnRate, _maxSpawnRate);
