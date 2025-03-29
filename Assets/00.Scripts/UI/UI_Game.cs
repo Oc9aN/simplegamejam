@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class UI_Game : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _scoreText;
+    [SerializeField] private TextMeshProUGUI _timerText;
     [SerializeField] private Slider _staminaSlider;
     [SerializeField] private Slider _fearSlider;
     
@@ -31,6 +32,11 @@ public class UI_Game : MonoBehaviour
     public void RefreshScore(int score)
     {
         _scoreText.text = $"{score}M";
+    }
+
+    public void RefreshTime(float time)
+    {
+        _timerText.text = $"{(int)time:00}:{(int)(time * 100) % 100:00}";
     }
 
     public void InitializeStamina(float maxStamina)

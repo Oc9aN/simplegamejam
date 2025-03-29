@@ -132,6 +132,7 @@ MonoBehaviour:
   _glidingForce: 4
   _glidingMaxVelocity: -3
   _glidingStamina: 25
+  _limitedX: 2.5
   _joystick: {fileID: 0}
 --- !u!114 &5193726968050507660
 MonoBehaviour:
@@ -157,6 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc1cb8c22b34f4545a13775a31d83465, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _recordHeight: 200
 --- !u!61 &3775915406523565196
 BoxCollider2D:
   m_ObjectHideFlags: 0
