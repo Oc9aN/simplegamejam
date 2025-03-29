@@ -20,8 +20,6 @@ public class ChickenMove : ChickenComponent
 
     [Header("LIMIT")] [SerializeField] private float _limitedX = 2.7f;
 
-    [SerializeField] private DynamicJoystick _joystick;
-
     private Rigidbody2D _rigidbody2D;
 
     private Vector2 _gravity;
@@ -33,9 +31,6 @@ public class ChickenMove : ChickenComponent
 
         _gravity = new Vector2(0f, -Physics2D.gravity.y); // 양수값으로 저장
 
-#if !UNITY_ANDROID
-        Destroy(_joystick.gameObject);
-#endif
     }
 
     private void Start()
@@ -54,7 +49,7 @@ public class ChickenMove : ChickenComponent
 
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            _rigidbody2D.AddForce(Vector2.down * _stampForce, ForceMode2D.Impulse);
+            Stamp();
         }
 
         Move();
@@ -80,7 +75,7 @@ public class ChickenMove : ChickenComponent
         var moveInput = Input.GetAxisRaw("Horizontal");
 
 #if UNITY_ANDROID
-        moveInput = _joystick.Horizontal;
+        moveInput = UIInputManager.Instance.AxisRaw;
 #endif
 
         if (moveInput != 0)
@@ -128,7 +123,7 @@ public class ChickenMove : ChickenComponent
         }
     }
 
-    private void OnGliding()
+    public void OnGliding()
     {
         // 활공 : _glidingMaxVelocity보다 더 느려질수는 없음
         if (Chicken.Stamina <= 0) return;
@@ -143,5 +138,10 @@ public class ChickenMove : ChickenComponent
                 _rigidbody2D.linearVelocity += _gravity * (_glidingForce * Time.deltaTime);
             }
         }
+    }
+
+    public void Stamp()
+    {
+        _rigidbody2D.AddForce(Vector2.down * _stampForce, ForceMode2D.Impulse);
     }
 }
