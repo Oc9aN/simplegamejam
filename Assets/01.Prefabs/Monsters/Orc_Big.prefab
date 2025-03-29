@@ -411,7 +411,7 @@ MonoBehaviour:
         Axis: 1
         AnimateScaleDuration: 0.6
         RemapCurveZero: 1
-        RemapCurveOne: 2
+        RemapCurveOne: 3
         Offset: 0
         AnimateCurve:
           serializedVersion: 2

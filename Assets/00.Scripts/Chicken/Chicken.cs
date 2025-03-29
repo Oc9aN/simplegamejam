@@ -9,7 +9,7 @@ public enum ChickenState
     Death,
 }
 
-// 변화하는 데이터를 담당
+// 변화하는 데이터, 다양한 컴포넌트 제어를 담당
 public class Chicken : MonoBehaviour
 {
     // 스테미나
@@ -24,6 +24,7 @@ public class Chicken : MonoBehaviour
     public event Action OnPlayStart;
 
     private SpriteRenderer _spriteRenderer;
+    private AudioSource _jumpSfx;
 
     private ChickenState _chickenState;
 
@@ -60,6 +61,7 @@ public class Chicken : MonoBehaviour
     private void Awake()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _jumpSfx = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -73,7 +75,7 @@ public class Chicken : MonoBehaviour
 
         // 게임 오버 및 재시작 설정
         PlayManager.Instance.OnPlayStart += StartPlay;
-        
+
         gameObject.SetActive(false);
     }
 
@@ -116,6 +118,11 @@ public class Chicken : MonoBehaviour
     public void FlipX(bool value)
     {
         _spriteRenderer.flipX = value;
+    }
+
+    public void PlayJumpSfx()
+    {
+        _jumpSfx.Play();
     }
 
     private void StartPlay()

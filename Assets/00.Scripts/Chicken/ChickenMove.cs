@@ -17,7 +17,7 @@ public class ChickenMove : ChickenComponent
     [Header("Gliding")] [SerializeField] private float _glidingForce = 1f; // 활공 힘
     [SerializeField] private float _glidingMaxVelocity = -3f; // 활공시 최대로 낮아지는 속도
     [SerializeField] private float _glidingStamina = 0.5f; // 활공시 소모 스테미너
-    
+
     [SerializeField] private DynamicJoystick _joystick;
 
     private Rigidbody2D _rigidbody2D;
@@ -30,7 +30,7 @@ public class ChickenMove : ChickenComponent
         _rigidbody2D = GetComponent<Rigidbody2D>();
 
         _gravity = new Vector2(0f, -Physics2D.gravity.y); // 양수값으로 저장
-        
+
 #if !UNITY_ANDROID
         Destroy(_joystick.gameObject);
 #endif
@@ -38,13 +38,13 @@ public class ChickenMove : ChickenComponent
 
     private void Start()
     {
-        Chicken.OnPlayStart += () => Jump();
+        Chicken.OnPlayStart += () => Jump(JUMP_FORCE, false);
     }
 
     private void Update()
     {
         if (Chicken.ChickenState == ChickenState.Death) return;
-        
+
         if (Input.GetKey(KeyCode.Space))
         {
             OnGliding();
@@ -60,17 +60,23 @@ public class ChickenMove : ChickenComponent
         CalculateGravity();
     }
 
-    public void Jump(float force = JUMP_FORCE)
+    public void Jump(float force = JUMP_FORCE, bool showEffect = true)
     {
         if (Chicken.ChickenState == ChickenState.Death) return;
-        
+
+        if (showEffect)
+        {
+            FeatherEffectPool.Instance.Create(transform.position);
+            Chicken.PlayJumpSfx();
+        }
+
         _rigidbody2D.linearVelocityY = force;
     }
 
     private void Move()
     {
         var moveInput = Input.GetAxisRaw("Horizontal");
-        
+
 #if UNITY_ANDROID
         moveInput = _joystick.Horizontal;
 #endif
@@ -79,7 +85,7 @@ public class ChickenMove : ChickenComponent
         {
             Chicken.FlipX(moveInput > 0);
         }
-        
+
         // TODO: 가속도로 이동하게
         _rigidbody2D.linearVelocityX = moveInput * _moveSpeed;
     }
@@ -91,7 +97,7 @@ public class ChickenMove : ChickenComponent
         {
             Chicken.ChickenState = ChickenState.Good;
         }
-        
+
         if (_rigidbody2D.linearVelocity.y < 0)
         {
             _rigidbody2D.linearVelocity -= _gravity * (_fallMultiplier * Time.deltaTime);

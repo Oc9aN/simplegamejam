@@ -9,6 +9,8 @@ public class Intro_Chicken : MonoBehaviour
 
     [SerializeField] private Transform _target;
 
+    private AudioSource _jumpSfx;
+
     private Rigidbody2D _rigidbody2D;
 
     private Animator _animator;
@@ -17,6 +19,7 @@ public class Intro_Chicken : MonoBehaviour
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
+        _jumpSfx = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -24,15 +27,22 @@ public class Intro_Chicken : MonoBehaviour
         _animator.SetFloat(Y_VELOCITY, _rigidbody2D.linearVelocityY);
     }
 
-    public void Jump(float jumpForce)
+    public void Jump(float jumpForce, bool showEffect = true)
     {
+        if (showEffect)
+        {
+            FeatherEffectPool.Instance.Create(transform.position);
+        }
+
+        _jumpSfx.Play();
+
         _rigidbody2D.linearVelocityY = jumpForce;
     }
 
     public void ChickenIntroJumpEvent()
     {
         _rigidbody2D.gravityScale = 1f;
-        Jump(_jumpForce);
+        Jump(_jumpForce, false);
         _rigidbody2D.linearVelocityX = 1f;
         StartCoroutine(Move());
     }
