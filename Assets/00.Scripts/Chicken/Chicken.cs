@@ -128,7 +128,7 @@ public class Chicken : MonoBehaviour
     private void StartPlay()
     {
         gameObject.SetActive(true);
-        transform.position = new Vector2(transform.position.x, PlayManager.START_HEIGHT);
+        transform.position = new Vector2(0, PlayManager.START_HEIGHT);
         ChickenState = ChickenState.Good;
         FearManager.instance.Fear = 0f;
         OnPlayStart?.Invoke();
